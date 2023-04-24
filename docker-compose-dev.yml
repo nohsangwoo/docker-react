@@ -1,0 +1,40 @@
+version: "3" # 도커 컴포즈 버전
+
+services:
+  # 이 곳에 실행하려는 컨테이너들을 정의
+
+  react-app:
+    # 컨테이너 이름
+
+    build:
+
+      context: .
+
+      dockerfile: Dockerfile.dev
+    #
+    ports:
+
+      - "4000:3000"
+
+    volumes:
+
+      - ./src:/app/src:ro
+      # - /usr/src/app/node_modules
+      # - ./:/usr/src/app
+
+    environment:
+
+      - REACT_APP_NAME=sangwoo
+
+      - REACT_APP_TITLE=miya
+
+      # 소스 수정 즉시 반영되는
+
+      # 핫로딩 활성화하는 부분
+
+      - CHOKIDAR_USEPOLLING=true
+
+    env_file:
+      - ./.env.local
+
+    stdin_open: true
