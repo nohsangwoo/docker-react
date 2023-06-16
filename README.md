@@ -1,8 +1,14 @@
+# build
+
+$ docker build -t react-image .
+
+$ docker build -f Dockerfile.dev -t noh/react-image ./
+
 # cli
 
-$ docker run -v $(pwd)/src:/app/src:ro -d -p 3002:3000 --name react-app react-image
+$ docker run -v $(pwd)/src:/app/src:ro -d -p 3002:3000 --network mynetwork --name react-app noh/react-image
 
-$ docker run -v $(pwd)/src:/app/src:ro -d -p 3002:3000 --env-file ./.env --name react-app react-image
+$ docker run -v $(pwd)/src:/app/src:ro -d -p 3002:3000 --network mynetwork --env-file ./.env --name react-app noh/react-image
 
 # develop
 
